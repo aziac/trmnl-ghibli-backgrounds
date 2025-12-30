@@ -1,1 +1,41 @@
+{% assign base_url = "https://raw.githubusercontent.com/aziac/trmnl-ghibli-backgrounds/main/data" %}
 
+{% capture file_list %}
+Howls Moving Castle_11.png
+Howls Moving Castle_16.png
+Howls Moving Castle_40.png
+Kikis Delivery Service_1.png
+Kikis Delivery Service_11.png
+Kikis Delivery Service_38.png
+Laputa Castle in the Sky_1.png
+Laputa Castle in the Sky_38.png
+Laputa Castle in the Sky_40.png
+Ponyo on the Cliff by the Sea_30.png
+Ponyo on the Cliff by the Sea_35.png
+Ponyo on the Cliff by the Sea_40.png
+Porco Rosso_1.png
+Porco Rosso_2.png
+Porco Rosso_26.png
+Princess Mononoke_24.png
+Princess Mononoke_3.png
+Princess Mononoke_33.png
+{% endcapture %}
+
+{% assign images = file_list | strip | newline_to_br | split: "<br />" %}
+{% assign random_filename = images | sample | strip_newlines | strip %}
+{% assign formatted_filename = random_filename | replace: ' ', '%20' %}
+{% assign final_image_url = base_url | append: "/" | append: formatted_filename %}
+
+<style>
+  .layout {
+    background-color: white; 
+    padding: 0; 
+    margin: 0;
+  }
+  .ghibli-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>
